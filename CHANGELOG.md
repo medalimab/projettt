@@ -14,5 +14,28 @@
 * **rental-service:** ajouter le modèle Rental pour gérer les données de location ([c7ac6df](https://github.com/medalimab/projettt/commit/c7ac6dfb932234a225981a0b1ad8b69213db2958))
 * **rental-service:** ajouter les routes API pour la gestion des locations ([56a8293](https://github.com/medalimab/projettt/commit/56a82936614d3f2104b61fcf7878b87bcf7842e1))
 
+### Chores
+
+* **rental-service:** initialiser le projet Laravel avec les fichiers par défaut ([13 minutes ago](https://github.com/medalimab/projettt/commit/13-minutes-ago))
+* **rental-service:** mettre à jour les dépendances dans composer.json et composer.lock ([38 minutes ago](https://github.com/medalimab/projettt/commit/38-minutes-ago))
+* **rental-service:** mettre à jour le fichier artisan pour l'exécution des commandes CLI ([39 minutes ago](https://github.com/medalimab/projettt/commit/39-minutes-ago))
+* **rental-service:** mettre à jour le fichier .gitignore pour ignorer les fichiers spécifiques ([40 minutes ago](https://github.com/medalimab/projettt/commit/40-minutes-ago))
+* **rental-service:** configurer les attributs Git dans .gitattributes ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **rental-service:** mettre à jour le fichier .env.example pour la configuration par défaut ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **rental-service:** configurer les règles d'édition dans .editorconfig ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **car-service:** mettre à jour les dépendances dans package.json et package-lock.json ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **car-service:** ajouter node_modules au fichier .gitignore ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+
+### Documentation
+
+* **readme:** mettre à jour la documentation pour car-service et rental-service ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **rental-service:** mettre à jour le README pour documenter les services car-service et rental-service ([18 minutes ago](https://github.com/medalimab/projettt/commit/18-minutes-ago))
+
+### Build System
+
+* **car-service:** mettre à jour le Dockerfile pour améliorer la configuration de l'image ([36 minutes ago](https://github.com/medalimab/projettt/commit/36-minutes-ago))
+* **docker:** mettre à jour le Dockerfile pour optimiser l'image ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+* **docker:** configurer les services car-service et rental-service dans docker-compose ([3 hours ago](https://github.com/medalimab/projettt/commit/3-hours-ago))
+
 
 
