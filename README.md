@@ -23,6 +23,9 @@ Ce projet utilise les technologies suivantes :
 - ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white) : Base de données pour Car-Service.
 - ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) : Base de données pour Rental-Service.
 - ![Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white) : Utilisé pour la communication interservices.
+- ![REST](https://img.shields.io/badge/REST-02569B?style=for-the-badge&logo=rest&logoColor=white) : Utilisé pour exposer des API dans les deux services.
+- ![gRPC](https://img.shields.io/badge/gRPC-4285F4?style=for-the-badge&logo=grpc&logoColor=white) : Utilisé pour la communication interservices dans Car-Service.
+- ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white) : Utilisé pour interroger les données dans Car-Service.
 
 ---
 
@@ -174,4 +177,5 @@ Remplacez `<nom_du_conteneur>` par `projettt-car-service-1` ou `projettt-rental-
 - **docker-compose.yml** : Fichier de configuration Docker Compose pour orchestrer les services.
 
 ---
+````
 
