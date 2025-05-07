@@ -13,6 +13,19 @@ Ce projet est une architecture orientée services (SOA) composée de deux servic
 
 ---
 
+## Technologies utilisées
+
+Ce projet utilise les technologies suivantes :
+
+- ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) : Utilisé pour le service Car-Service.
+- ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white) : Utilisé pour le service Rental-Service.
+- ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) : Utilisé pour conteneuriser les services.
+- ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white) : Base de données pour Car-Service.
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) : Base de données pour Rental-Service.
+- ![Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white) : Utilisé pour la communication interservices.
+
+---
+
 ## Car-Service
 
 ### Description
