@@ -43,7 +43,7 @@ Expose des API **REST**, **gRPC**, et **GraphQL**.
 
 ### ▶️ Démarrage
 
-```bash
+
 docker-compose up -d car-service
 
 
@@ -66,11 +66,12 @@ mutation AddCar {
   }
 }
 
+
 🏠 Rental-Service
 📄 Description
 Service Laravel pour gérer les locations.
 Utilise MySQL et Kafka pour la communication interservices.
-▶️ Démarrage
+### ▶️ Démarrage
 
 docker-compose up -d rental-service
 ***REST : http://localhost:81/api/rentals
