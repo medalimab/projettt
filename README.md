@@ -102,7 +102,8 @@ docker logs <nom_du_conteneur>
 └── docker-compose.yml    # Configuration des conteneurs
 ```
 
-🧩 Architecture du projet
+###🧩 Architecture du projet
+
 ![Diagramme de l'architecture](./assets/diagram.png)
 
 Ce diagramme illustre la communication entre les services via REST, gRPC, GraphQL, et Kafka.
