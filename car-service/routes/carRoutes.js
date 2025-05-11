@@ -31,6 +31,50 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+const mongoose = require('mongoose');
+
+router.put('/:id', async (req, res) => {
+  console.log('Requête reçue pour mise à jour complète :', req.body);
+
+  // Vérifie que l'ID est valide
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Invalid car ID format' });
+  }
+
+  try {
+    const updatedCar = await Car.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+    if (!updatedCar) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    console.log('Voiture mise à jour :', updatedCar);
+
+    await producer.connect();
+    await producer.send({
+      topic: 'car-updates',
+      messages: [
+        {
+          value: JSON.stringify({
+            car_id: updatedCar._id,
+            brand: updatedCar.brand,
+            model: updatedCar.model,
+            year: updatedCar.year,
+            available: updatedCar.available
+          })
+        },
+      ],
+    });
+    await producer.disconnect();
+
+    res.json({ message: 'Car updated and published to Kafka', car: updatedCar });
+
+  } catch (err) {
+    console.error('Erreur lors de la mise à jour :', err);
+    res.status(500).json({ message: 'Internal server error', error: err.message });
+  }
+});
+
 
 // Route pour mettre à jour la disponibilité d'une voiture et publier sur Kafka
 router.put('/:id/availability', async (req, res) => {
