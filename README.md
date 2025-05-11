@@ -109,27 +109,9 @@ Copier
 Modifier
 docker logs <nom_du_conteneur>
 Architecture du Projet (Diagramme Mermaid)
-mermaid
-Copier
-Modifier
-graph TD
-    subgraph Car-Service
-    A1[Car-Service] -->|REST API| B1[MongoDB]
-    A1 -->|gRPC| B1
-    A1 -->|GraphQL| B1
-    end
-    
-    subgraph Rental-Service
-    C1[Rental-Service] -->|REST API| D1[MySQL]
-    C1 -->|Kafka| E1[Car-Service]
-    end
-    
-    subgraph Kafka
-    E1[Kafka] -->|Message| C1
-    end
 
-    A1 -->|Communicates| C1
-    B1 -->|Stores Car Data| C1
+![Diagramme de l'architecture](./assets/diagram.png)
+
 Ce diagramme montre comment les services sont structurés et communiquent entre eux via REST, gRPC, GraphQL, et Kafka. Le service Car-Service gère les voitures via MongoDB et expose des API REST, gRPC et GraphQL. Le service Rental-Service gère les locations et communique avec Car-Service via Kafka pour synchroniser les données.
 
 Structure du projet
