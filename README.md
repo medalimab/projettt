@@ -62,19 +62,19 @@ mutation AddCar {
     available
   }
 }
-
-###🏠 Rental-Service
+---
+##🏠 Rental-Service
 ###📄 Description
 Service Laravel pour gérer les locations.
 Utilise MySQL et Kafka pour la communication interservices.
 
-### ▶️ Démarrage
+###▶️ Démarrage
 bash
 Copier
 Modifier
 docker-compose up -d rental-service
 REST : http://localhost:81/api/rentals
-
+---
 ###🧾 Commandes utiles
 bash
 Copier
@@ -98,10 +98,8 @@ Modifier
 └── docker-compose.yml    # Configuration des conteneurs
 
 ###🧩 Architecture du projet
+
 ![Diagramme de l'architecture](./assets/diagram.png)
-
-
-
 
 Ce diagramme illustre la communication entre les services via REST, gRPC, GraphQL, et Kafka.
 
