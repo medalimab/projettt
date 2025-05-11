@@ -1,122 +1,104 @@
-# Projet SOA - Architecture avec Car-Service et Rental-Service
+# 🚗🔧 Projet SOA - Architecture avec Car-Service et Rental-Service
 
-Ce projet est une architecture orientée services (SOA) composée de deux services principaux :
+Ce projet met en œuvre une architecture orientée services (SOA) composée de deux microservices principaux :  
+**Car-Service** (Node.js + MongoDB) et **Rental-Service** (Laravel + MySQL), communiquant via Kafka.
 
-- **Car-Service** : Un service Node.js pour la gestion des voitures.
-- **Rental-Service** : Un service Laravel pour la gestion des locations.
+---
 
-## Prérequis
+## 🧰 Technologies utilisées
 
-- Docker et Docker Compose installés sur votre machine.
-- Accès à une base de données MongoDB pour le service Car-Service.
-- Accès à une base de données MySQL pour le service Rental-Service.
+<p align="left">
+  <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Laravel-F9322C?logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apache Kafka-231F20?logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/GraphQL-E10098?logo=graphql&logoColor=white" />
+  <img src="https://img.shields.io/badge/gRPC-5C7AEA?logo=grpc&logoColor=white" />
+  <img src="https://img.shields.io/badge/REST-000000?logo=rest&logoColor=white" />
+</p>
 
-## Technologies utilisées
+---
 
-- Node.js : Utilisé pour le service Car-Service.
-- Laravel : Utilisé pour le service Rental-Service.
-- Docker : Utilisé pour conteneuriser les services.
-- MongoDB : Base de données pour Car-Service.
-- MySQL : Base de données pour Rental-Service.
-- Kafka : Utilisé pour la communication interservices.
-- REST, gRPC, GraphQL : Protocoles utilisés pour l'interaction avec les services.
+## ⚙️ Prérequis
 
-## Car-Service
+- Docker & Docker Compose
+- MongoDB pour Car-Service
+- MySQL pour Rental-Service
 
-### Description
-Le service Car-Service est développé en Node.js et utilise Mongoose pour interagir avec une base de données MongoDB. Il expose des API REST et gRPC pour gérer les données des voitures.
+---
 
-### Fonctionnalités principales
-- Ajouter, modifier et supprimer des voitures.
-- Récupérer les informations d'une voiture via REST, gRPC, ou GraphQL.
+## 🚙 Car-Service
 
-### Démarrage du service
-1. Construisez et démarrez le conteneur Docker :
-   ```bash
-   docker-compose up -d car-service
-Accédez au service REST à l'adresse :
+### 📄 Description
+Service Node.js pour gérer les voitures, utilisant Mongoose + MongoDB.  
+Expose des API **REST**, **gRPC**, et **GraphQL**.
 
-arduino
-Copier
-Modifier
-http://localhost:3000
-Accédez au service gRPC à l'adresse :
+### ✨ Fonctionnalités
+- CRUD Voitures
+- Accès via REST, gRPC, et GraphQL
 
-makefile
-Copier
-Modifier
-localhost:4000
-Tester l'API GraphQL
-Démarrez le service Car-Service comme indiqué précédemment.
+### ▶️ Démarrage
+```bash
+docker-compose up -d car-service
 
-Accédez à l'interface GraphQL à l'adresse suivante :
+REST : http://localhost:3000/cars
 
-bash
-Copier
-Modifier
-http://localhost:3000/graphql
-Exemple de requête GraphQL
+gRPC : localhost:4000
+
+GraphQL : http://localhost:3000/graphql
+
+Exemple de requête GraphQL :
 graphql
 Copier
 Modifier
 mutation AddCar {
-    addCar(brand: "tesla", year:2025, model: "tesla", available: false) {
-        id
-        brand
-        model
-        year
-        available
-    }
+  addCar(brand: "tesla", year: 2025, model: "tesla", available: false) {
+    id
+    brand
+    model
+    year
+    available
+  }
 }
-Rental-Service
-Description
-Le service Rental-Service est développé en Laravel et utilise une base de données MySQL. Il expose des API REST pour gérer les locations et consomme des messages Kafka pour la communication interservices.
 
-Démarrage du service
-Construisez et démarrez le conteneur Docker :
+🏠 Rental-Service
+📄 Description
+Service Laravel pour gérer les locations.
+Utilise MySQL et Kafka pour la communication interservices.
 
+▶️ Démarrage
 bash
 Copier
 Modifier
 docker-compose up -d rental-service
-Accédez au service REST à l'adresse :
+REST : http://localhost:81/api/rentals
 
+🧾 Commandes utiles
 bash
 Copier
 Modifier
-http://localhost:81/api/rentals
-Base de données
-Car-Service
-Utilise MongoDB.
-
-Rental-Service
-Utilise MySQL.
-
-Commandes utiles
-Démarrer tous les services
-bash
-Copier
-Modifier
+# Démarrer tous les services
 docker-compose up -d
-Arrêter tous les services
-bash
-Copier
-Modifier
+
+# Arrêter tous les services
 docker-compose down
-Vérifier les logs d'un service
+
+# Voir les logs d’un service
+docker logs <nom_du_conteneur>
+🧱 Structure du projet
 bash
 Copier
 Modifier
-docker logs <nom_du_conteneur>
-Architecture du Projet (Diagramme Mermaid)
+.
+├── car-service/          # Service Node.js + MongoDB
+├── rental-service/       # Service Laravel + MySQL
+├── assets/diagram.png    # Diagramme de l’architecture
+└── docker-compose.yml    # Configuration des conteneurs
 
-![Diagramme de l'architecture](./assets/diagram.png)
+🧩 Architecture du projet
 
-Ce diagramme montre comment les services sont structurés et communiquent entre eux via REST, gRPC, GraphQL, et Kafka. Le service Car-Service gère les voitures via MongoDB et expose des API REST, gRPC et GraphQL. Le service Rental-Service gère les locations et communique avec Car-Service via Kafka pour synchroniser les données.
 
-Structure du projet
-car-service/ : Contient le code du service Car-Service.
+Ce diagramme illustre la communication entre les services via REST, gRPC, GraphQL, et Kafka.
 
-rental-service/ : Contient le code du service Rental-Service.
-
-docker-compose.yml : Fichier de configuration Docker Compose pour orchestrer les services.
