@@ -36,10 +36,14 @@ Ce projet met en œuvre une architecture orientée services (SOA) composée de d
 Service Node.js pour gérer les voitures, utilisant Mongoose + MongoDB.  
 Expose des API **REST**, **gRPC**, et **GraphQL**.
 
+---
+
 ### ✨ Fonctionnalités
 
 - CRUD Voitures
 - Accès via REST, gRPC, et GraphQL
+
+---
 
 ### ▶️ Démarrage
 
@@ -67,10 +71,13 @@ mutation AddCar {
 }
 
 
+---
+
 🏠 Rental-Service
 📄 Description
 Service Laravel pour gérer les locations.
 Utilise MySQL et Kafka pour la communication interservices.
+
 ### ▶️ Démarrage
 
 docker-compose up -d rental-service
@@ -86,12 +93,14 @@ docker-compose down
 # Voir les logs d’un service
 docker logs <nom_du_conteneur>
 
+```bash
 🧱 Structure du projet
 
 ├── car-service/          # Service Node.js + MongoDB
 ├── rental-service/       # Service Laravel + MySQL
 ├── assets/diagram.png    # Diagramme de l’architecture
 └── docker-compose.yml    # Configuration des conteneurs
+```
 
 🧩 Architecture du projet
 ![Diagramme de l'architecture](./assets/diagram.png)
