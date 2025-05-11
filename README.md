@@ -58,8 +58,8 @@ docker-compose up -d car-service
 ***GraphQL : http://localhost:3000/graphql
 
 Exemple de requête GraphQL
-graphql
 
+```bash
 mutation AddCar {
   addCar(brand: "tesla", year: 2025, model: "tesla", available: false) {
     id
@@ -69,7 +69,7 @@ mutation AddCar {
     available
   }
 }
-
+```
 
 ---
 
@@ -79,7 +79,7 @@ Service Laravel pour gérer les locations.
 Utilise MySQL et Kafka pour la communication interservices.
 
 ### ▶️ Démarrage
-
+```bash
 docker-compose up -d rental-service
 ***REST : http://localhost:81/api/rentals
 🧾 Commandes utiles
@@ -92,7 +92,7 @@ docker-compose down
 
 # Voir les logs d’un service
 docker logs <nom_du_conteneur>
-
+```
 ```bash
 🧱 Structure du projet
 
