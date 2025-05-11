@@ -50,9 +50,8 @@ gRPC : localhost:4000
 GraphQL : http://localhost:3000/graphql
 
 Exemple de requête GraphQL :
+```bash
 graphql
-Copier
-Modifier
 mutation AddCar {
   addCar(brand: "tesla", year: 2025, model: "tesla", available: false) {
     id
@@ -61,7 +60,7 @@ mutation AddCar {
     year
     available
   }
-}
+} ```
 ---
 ##🏠 Rental-Service
 ###📄 Description
