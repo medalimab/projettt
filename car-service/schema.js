@@ -52,55 +52,63 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addCar: {
-      type: CarType,
-      args: {
-        brand: { type: new GraphQLNonNull(GraphQLString) },
-        model: { type: new GraphQLNonNull(GraphQLString) },
-        available: { type: new GraphQLNonNull(GraphQLBoolean) },
-      },
-      resolve(parent, args) {
-        console.log('Données reçues pour addCar:', args);
-        return axios.post('http://localhost:3000/cars', {
-          brand: args.brand,
-          model: args.model,
-          available: args.available,
-        }).then(res => {
-          console.log('Réponse de l\'API REST pour addCar:', res.data);
-          return {
-            id: res.data._id, // Mapper _id à id
-            brand: res.data.brand,
-            model: res.data.model,
-            available: res.data.available,
-          };
-        }).catch(err => {
-          console.error('Erreur lors de l\'appel à l\'API REST pour addCar:', err);
-          throw new Error('Impossible d\'ajouter la voiture');
-        });
-      },
-    },
+  addCar: {
+  type: CarType,
+  args: {
+    brand: { type: new GraphQLNonNull(GraphQLString) },
+    model: { type: new GraphQLNonNull(GraphQLString) },
+    year: { type: new GraphQLNonNull(GraphQLInt) },
+    available: { type: new GraphQLNonNull(GraphQLBoolean) },
+  },
+  resolve(parent, args) {
+    console.log('Données reçues pour addCar:', args);
+    return axios.post('http://localhost:3000/cars', {
+      brand: args.brand,
+      model: args.model,
+      year: args.year, 
+      available: args.available,
+    }).then(res => {
+      console.log('Réponse de l\'API REST pour addCar:', res.data);
+      return {
+        id: res.data._id,
+        brand: res.data.brand,
+        model: res.data.model,
+        year: res.data.year, 
+        available: res.data.available,
+      };
+    }).catch(err => {
+      console.error('Erreur lors de l\'appel à l\'API REST pour addCar:', err);
+      throw new Error('Impossible d\'ajouter la voiture');
+    });
+  },
+},
+
     updateCar: {
-      type: CarType,
-      args: {
-        id: { type: new GraphQLNonNull(GraphQLID) },
-        available: { type: new GraphQLNonNull(GraphQLBoolean) },
-      },
-      resolve(parent, args) {
-        return axios.put(`http://localhost:3000/cars/${args.id}/availability`, {
-          available: args.available
-        }).then(() => {
-          // Récupérer les données mises à jour après la modification
-          return axios.get(`http://localhost:3000/cars/${args.id}`).then(res => ({
-            id: res.data._id, // Mapper _id à id
-            brand: res.data.brand,
-            model: res.data.model,
-            available: res.data.available
-          }));
-        }).catch(err => {
-          console.error('Erreur lors de la mise à jour de la voiture :', err);
-          throw new Error('Impossible de mettre à jour la voiture');
-        });
-      },
+  type: CarType,
+  args: {
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    brand: { type: GraphQLString },
+    model: { type: GraphQLString },
+    year: { type: GraphQLInt },
+    available: { type: GraphQLBoolean },
+  },
+  resolve(parent, args) {
+    return axios.put(`http://localhost:3000/cars/${args.id}`, {
+      brand: args.brand,
+      model: args.model,
+      year: args.year,
+      available: args.available,
+    }).then(res => ({
+      id: res.data.car._id,
+      brand: res.data.car.brand,
+      model: res.data.car.model,
+      year: res.data.car.year,
+      available: res.data.car.available
+    })).catch(err => {
+      console.error('Erreur lors de la mise à jour de la voiture (GraphQL) :', err.message);
+      throw new Error('Impossible de mettre à jour la voiture');
+    });
+  },
     },
     deleteCar: {
       type: CarType,
@@ -124,7 +132,7 @@ const Mutation = new GraphQLObjectType({
           });
       },
     },
-  },
+  }
 });
 
 module.exports = new GraphQLSchema({ query: RootQuery, mutation: Mutation });
