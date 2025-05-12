@@ -102,6 +102,38 @@ docker logs <nom_du_conteneur>
 └── docker-compose.yml    # Configuration des conteneurs
 ```
 
+# 🧪 Tester Kafka
+
+Pour vérifier la communication asynchrone entre Car-Service et Rental-Service via Kafka :
+
+1. **Démarrer tous les services**
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Lancer le consommateur Kafka dans Rental-Service**
+   ```bash
+   docker exec -it projettt-rental-service-1 php artisan kafka:consume
+   ```
+   Cette commande permet à Rental-Service d'écouter les messages Kafka (topic `car-updates`).
+
+3. **Mettre à jour la disponibilité d'une voiture via Car-Service**
+   - Effectuer une requête PUT sur l'API REST :
+     ```http
+     PUT http://localhost:3000/cars/<id_de_la_voiture>/availability
+     Content-Type: application/json
+
+     {
+       "available": false
+     }
+     ```
+   - Remplacez `<id_de_la_voiture>` par l'identifiant réel d'une voiture existante.
+
+4. **Observer le résultat côté Rental-Service**
+   - Si tout fonctionne, le consommateur Kafka affichera dans la console la réception du message et la mise à jour du statut de la location liée à la voiture.
+
+---
+
 ###🧩 Architecture du projet
 
 ![Diagramme de l'architecture](./assets/diagram.png)
